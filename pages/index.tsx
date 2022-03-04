@@ -1,8 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import logo from './assets/tokey_logo.png';
 
 import {
 	FaLinkedinIn,
@@ -38,7 +36,7 @@ const Home: NextPage = () => {
 
 			<main className={style.container}>
 				<div className={style.logo}>
-					<Image src={logo} />
+					<img src='tokey_logo.png' alt='Tokey logo' />
 				</div>
 				<div className={style.iconRow}>
 					<div className={style.iconAnchorImage}>
