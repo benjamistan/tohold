@@ -3,8 +3,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 
-import logo from './assets/tokey_logo.png';
-
 import {
 	FaLinkedinIn,
 	FaGithub,
@@ -12,6 +10,8 @@ import {
 	FaRedditAlien,
 	FaTwitter,
 } from 'react-icons/fa';
+
+const logo = 'tokey_logo.png';
 
 const style = {
 	container: 'h-screen align-middle',
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
 
 			<main className={style.container}>
 				<div className={style.logo}>
-					<Image src={logo} alt='Tokey logo' />
+					<Image src={logo} alt='Tokey logo' height={132} width={452} />
 				</div>
 				<div className={style.iconRow}>
 					<div className={style.iconAnchorImage}>
