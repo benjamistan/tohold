@@ -2,7 +2,7 @@
 const nextConfig = {
 	images: {
 		loader: 'imgix',
-		path: 'https://tokey.imgix.net',
+		path: 'https://tokey.imgix.net/',
 	},
 	reactStrictMode: true,
 	experimental: {

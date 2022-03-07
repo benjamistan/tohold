@@ -8,4 +8,4 @@ From the root of this repo, run `docker build . -t tohold`.
 
 ## Running NFTM in a Docker container
 
-Run it using `docker run -p 80:80 tohold`.
+Run it using `docker run -p 3000:3000 tohold`.
