@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Script from 'next/script';
 import styles from '../styles/Home.module.css';
 
+import MailingListSignup from '../components/MailingListSignup';
+
 import {
 	FaLinkedinIn,
 	FaGithub,
@@ -42,6 +44,7 @@ const Home: NextPage = () => {
 				<div className={style.logo}>
 					<Image src={logo} alt='Tokey logo' height={132} width={452} />
 				</div>
+				<MailingListSignup />
 				<div className={style.iconRow}>
 					<div className={style.iconAnchorImage}>
 						<a href='https://discord.com' type='button'>
