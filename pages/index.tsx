@@ -19,7 +19,7 @@ const logo = 'tokey_logo.png';
 const style = {
 	container: 'h-screen align-middle',
 	logo: 'p-4 pt-20 flex justify-center',
-	iconRow: 'flex flex-row justify-center',
+	flexJustifyCenter: 'flex flex-row justify-center pt-20',
 	iconAnchorImage:
 		'flex flex-row justify-center text-4xl font-black px-2 m-1 text-[#070d59] hover:text-[#a8c2e2] cursor-pointer',
 	footer: 'flex border-t-1',
@@ -44,8 +44,11 @@ const Home: NextPage = () => {
 				<div className={style.logo}>
 					<Image src={logo} alt='Tokey logo' height={132} width={452} />
 				</div>
-				<MailingListSignup />
-				<div className={style.iconRow}>
+
+				<div className={style.flexJustifyCenter}>
+					<MailingListSignup />
+				</div>
+				<div className={style.flexJustifyCenter}>
 					<div className={style.iconAnchorImage}>
 						<a href='https://discord.com' type='button'>
 							<div className={style.iconAnchorImage}>
