@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -23,15 +24,34 @@ const style = {
 	iconAnchorImage:
 		'flex flex-row justify-center text-4xl font-black px-2 m-1 text-[#070d59] hover:text-[#a8c2e2] cursor-pointer',
 	footer: 'flex border-t-1',
-	// display: flex;
-	// flex: 1;
-	// padding: 2rem 0;
-	// border-top: 1px solid #eaeaea;
-	// justify-content: center;
-	// align-items: center;
+	formContainer: 'grid grid-cols-6 gap-4 w-1/2',
+	signUpButton:
+		'shadow bg-[#070d59] hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded',
+	formInputContainer: 'flex items-center border-b border-[#070d59] py-2',
+	formLabel: 'block text-[#070d59] font-bold text-3xl pb-5',
+	formInput:
+		'appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none',
+	formButtonOpaque:
+		'flex-shrink-0 bg-[#070d59] hover:bg-[#070d59] border-[#070d59] hover:border-[#070d59] text-sm border-4 text-white py-1 px-2 rounded',
+	formButtonTrans:
+		'flex-shrink-0 border-transparent border-4 text-[#070d59] hover:text-[#a8c2e2] text-sm py-1 px-2 rounded',
 };
 
 const Home: NextPage = () => {
+	const [emailAddress, setEmailAddress] = useState('');
+
+	const submitEmailAddress = async () => {
+		const response = await fetch('/api/hubspot', {
+			method: 'POST',
+			body: JSON.stringify({ emailAddress }),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+		const data = await response.json();
+		console.log(data);
+	};
+
 	return (
 		<div>
 			<Head>
@@ -46,7 +66,30 @@ const Home: NextPage = () => {
 				</div>
 
 				<div className={style.flexJustifyCenter}>
-					<MailingListSignup />
+					<div className={style.formContainer}>
+						<div className='col-start-2 col-span-4'>
+							<form>
+								<h1 className={style.formLabel}>Join our mailing list:</h1>
+								<div className={style.formInputContainer}>
+									<input
+										className={style.formInput}
+										type='email'
+										placeholder='your@email.com'
+										aria-label='Email'
+										value={emailAddress}
+										onChange={(e) => setEmailAddress(e.target.value)}
+									/>
+									<button
+										className={style.formButtonOpaque}
+										type='button'
+										onClick={submitEmailAddress}
+									>
+										Sign Up
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>
 				<div className={style.flexJustifyCenter}>
 					<div className={style.iconAnchorImage}>
