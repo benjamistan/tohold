@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import Script from 'next/script';
 import styles from '../styles/Home.module.css';
-
-import MailingListSignup from '../components/MailingListSignup';
 
 import {
 	FaLinkedinIn,
@@ -28,17 +25,17 @@ const style = {
 	signUpButton:
 		'shadow bg-[#070d59] hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded',
 	formInputContainer: 'flex items-center border-b border-[#070d59] py-2',
-	formLabel: 'block text-[#070d59] font-bold text-3xl pb-5',
+	formLabel: 'block text-[#070d59] font-bold text-3xl pb-5 text-center',
+	formLabelSubmitted: 'block text-[#070d59] font-bold pb-5 text-center',
 	formInput:
 		'appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none',
 	formButtonOpaque:
-		'flex-shrink-0 bg-[#070d59] hover:bg-[#070d59] border-[#070d59] hover:border-[#070d59] text-sm border-4 text-white py-1 px-2 rounded',
-	formButtonTrans:
-		'flex-shrink-0 border-transparent border-4 text-[#070d59] hover:text-[#a8c2e2] text-sm py-1 px-2 rounded',
+		'flex-shrink-0 bg-[#070d59] bg-[#070d59] border-[#070d59] hover:bg-[#a8c2e2] hover:border-[#a8c2e2] text-sm border-4 text-white py-1 px-2 rounded',
 };
 
 const Home: NextPage = () => {
-	const [emailAddress, setEmailAddress] = useState('');
+	const [emailAddress, setEmailAddress] = useState<string>('');
+	const [submitted, setSubmitted] = useState<boolean>(false);
 
 	const submitEmailAddress = async () => {
 		const response = await fetch('/api/hubspot', {
@@ -49,8 +46,10 @@ const Home: NextPage = () => {
 			},
 		});
 		const data = await response.json();
-		console.log(data);
+		setSubmitted(true);
 	};
+
+	useEffect(() => {}, [submitted]);
 
 	return (
 		<div>
@@ -68,26 +67,32 @@ const Home: NextPage = () => {
 				<div className={style.flexJustifyCenter}>
 					<div className={style.formContainer}>
 						<div className='col-start-2 col-span-4'>
-							<form>
-								<h1 className={style.formLabel}>Join our mailing list:</h1>
-								<div className={style.formInputContainer}>
-									<input
-										className={style.formInput}
-										type='email'
-										placeholder='your@email.com'
-										aria-label='Email'
-										value={emailAddress}
-										onChange={(e) => setEmailAddress(e.target.value)}
-									/>
-									<button
-										className={style.formButtonOpaque}
-										type='button'
-										onClick={submitEmailAddress}
-									>
-										Sign Up
-									</button>
+							{!submitted ? (
+								<form>
+									<h1 className={style.formLabel}>Join our mailing list:</h1>
+									<div className={style.formInputContainer}>
+										<input
+											className={style.formInput}
+											type='email'
+											placeholder='your@email.com'
+											aria-label='Email'
+											value={emailAddress}
+											onChange={(e) => setEmailAddress(e.target.value)}
+										/>
+										<button
+											className={style.formButtonOpaque}
+											type='button'
+											onClick={submitEmailAddress}
+										>
+											Sign Up
+										</button>
+									</div>
+								</form>
+							) : (
+								<div className={style.formLabelSubmitted}>
+									Thanks! If that was an email, it was submitted.
 								</div>
-							</form>
+							)}
 						</div>
 					</div>
 				</div>
