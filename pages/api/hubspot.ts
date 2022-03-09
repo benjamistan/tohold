@@ -26,7 +26,7 @@ export default async function handler(
 
 		hubspotResponse = await axios
 			.post(
-				'https://api.hubapi.com/crm/v3/objects/contacts?hapikey=eu1-e6e3-adcf-4b55-b47b-558d1cdbc19c',
+				`https://api.hubapi.com/crm/v3/objects/contacts?hapikey=${process.env.HUBSPOT_API_KEY}`,
 				{
 					properties: {
 						company: null,

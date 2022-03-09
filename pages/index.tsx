@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 import {
@@ -20,7 +21,8 @@ const style = {
 	flexJustifyCenter: 'flex flex-row justify-center pt-20',
 	iconAnchorImage:
 		'flex flex-row justify-center text-4xl font-black px-2 m-1 text-[#070d59] hover:text-[#a8c2e2] cursor-pointer',
-	footer: 'flex border-t-1',
+	footer: 'flex border-t-1 text-center',
+	footerLink: 'text-[#070d59] hover:text-[#a8c2e2] font-bold',
 	formContainer: 'grid grid-cols-6 gap-4 w-1/2',
 	signUpButton:
 		'shadow bg-[#070d59] hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded',
@@ -116,7 +118,12 @@ const Home: NextPage = () => {
 					</div>
 				</div>
 			</main>
-			<footer className={styles.footer}>&copy;2022 Tokey Ltd</footer>
+			<footer className={styles.footer}>
+				<div>&copy;2022 Tokey Ltd | </div>&nbsp;
+				<div className={style.footerLink}>
+					<Link href='/privacy'>Privacy</Link>
+				</div>
+			</footer>
 		</div>
 	);
 };
