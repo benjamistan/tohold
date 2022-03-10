@@ -2,10 +2,10 @@
 
 ## Building the Docker image
 
-From the root of this repo, run `docker build . -t tohold`.
+From the root of this repo, run `docker build . -t tohold .`
 
 <br>
 
 ## Running NFTM in a Docker container
 
-Run it using `docker run -p 3000:3000 tohold`.
+Run it using `docker run -p 3000:3000 tohold`. You'll also need to ensure the keys for Hubspot and reCAPTCHA are passed in as env vars.

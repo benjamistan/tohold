@@ -62,7 +62,13 @@ const Home: NextPage = () => {
 		setRecaptchaVisible(true);
 	};
 
-	useEffect(() => {}, [submitted, recaptchaVisible]);
+	useEffect(() => {
+		console.log(`running in env: ${process.env.NODE_ENV}`);
+		console.log(
+			`reCAPTCHA key is: ${process.env.NEXT_PUBLIC_RECAPTCHAV2_SITE_KEY}`
+		);
+		console.log(`Hubspot key is: ${process.env.HUBSPOT_API_KEY}`);
+	}, [submitted, recaptchaVisible]);
 
 	return (
 		<div>

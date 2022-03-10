@@ -1,4 +1,8 @@
 version: 0.2
+env:
+  variables:
+    HUBSPOT_API_KEY: $HUBSPOT_API_KEY
+    NEXT_PUBLIC_RECAPTCHAV2_SITE_KEY: $NEXT_PUBLIC_RECAPTCHAV2_SITE_KEY
 phases:
   install:
     runtime-versions:
