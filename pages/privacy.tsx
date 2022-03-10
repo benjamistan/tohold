@@ -9,7 +9,7 @@ import styles from '../styles/Home.module.css';
 
 const style = {
 	container: 'h-screen align-middle',
-	logo: 'p-4 pt-20 flex justify-center',
+	logo: 'p-4 pt-20 flex justify-center cursor-pointer',
 	textContainer: 'grid grid-cols-3 gap-4',
 	textColumn: 'col-start-2',
 	h1: 'block text-[#070d59] font-bold text-3xl pb-1 pt-5',
@@ -33,7 +33,9 @@ export default function Privacy() {
 			</Head>
 			<main className={style.container}>
 				<div className={style.logo}>
-					<Image src={logo} alt='Tokey logo' height={132} width={452} />
+					<Link href='/' passHref>
+						<Image src={logo} alt='Tokey logo' height={132} width={452} />
+					</Link>
 				</div>
 				<div className={style.textContainer}>
 					<div className={style.textColumn}>
@@ -129,6 +131,7 @@ export default function Privacy() {
 							is not limited to:
 						</p>
 						<p className={style.p}>Email address</p>
+						<br />
 						<h4 className={style.h4}>Usage Data</h4>
 						<p className={style.p}>
 							Usage Data is collected automatically when using the Service.
