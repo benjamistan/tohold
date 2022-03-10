@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import {
 	FaLinkedinIn,
@@ -33,11 +34,15 @@ const style = {
 		'appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none',
 	formButtonOpaque:
 		'flex-shrink-0 bg-[#070d59] bg-[#070d59] border-[#070d59] hover:bg-[#a8c2e2] hover:border-[#a8c2e2] text-sm border-4 text-white py-1 px-2 rounded',
+	recaptchaContainer: 'grid grid-cols-3 gap-4 pt-10',
+	recaptchaBox: 'flex col-start-2 col-span-1 justify-center',
 };
 
 const Home: NextPage = () => {
 	const [emailAddress, setEmailAddress] = useState<string>('');
 	const [submitted, setSubmitted] = useState<boolean>(false);
+	const [recaptchaVisible, setRecaptchaVisible] = useState<boolean>(false);
+	const reRef = useRef<ReCAPTCHA>();
 
 	const submitEmailAddress = async () => {
 		const response = await fetch('/api/hubspot', {
@@ -51,7 +56,11 @@ const Home: NextPage = () => {
 		setSubmitted(true);
 	};
 
-	useEffect(() => {}, [submitted]);
+	const triggerRecaptcha = () => {
+		setRecaptchaVisible(true);
+	};
+
+	useEffect(() => {}, [submitted, recaptchaVisible]);
 
 	return (
 		<div>
@@ -70,7 +79,7 @@ const Home: NextPage = () => {
 					<div className={style.formContainer}>
 						<div className='col-start-2 col-span-4'>
 							{!submitted ? (
-								<form>
+								<form id='form'>
 									<h1 className={style.formLabel}>Join our mailing list:</h1>
 									<div className={style.formInputContainer}>
 										<input
@@ -84,7 +93,7 @@ const Home: NextPage = () => {
 										<button
 											className={style.formButtonOpaque}
 											type='button'
-											onClick={submitEmailAddress}
+											onClick={triggerRecaptcha}
 										>
 											Sign Up
 										</button>
@@ -96,6 +105,19 @@ const Home: NextPage = () => {
 								</div>
 							)}
 						</div>
+					</div>
+				</div>
+				<div className={style.recaptchaContainer}>
+					<div className={style.recaptchaBox}>
+						{recaptchaVisible ? (
+							<ReCAPTCHA
+								sitekey={process.env.NEXT_PUBLIC_RECAPTCHAV2_SITE_KEY}
+								ref={reRef}
+								onChange={submitEmailAddress}
+							/>
+						) : (
+							<div></div>
+						)}
 					</div>
 				</div>
 				<div className={style.flexJustifyCenter}>
