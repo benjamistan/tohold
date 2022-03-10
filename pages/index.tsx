@@ -42,7 +42,9 @@ const Home: NextPage = () => {
 	const [emailAddress, setEmailAddress] = useState<string>('');
 	const [submitted, setSubmitted] = useState<boolean>(false);
 	const [recaptchaVisible, setRecaptchaVisible] = useState<boolean>(false);
-	const reRef = useRef<ReCAPTCHA>();
+
+	const reCAPTCHAKey: string | any =
+		process.env.NEXT_PUBLIC_RECAPTCHAV2_SITE_KEY;
 
 	const submitEmailAddress = async () => {
 		const response = await fetch('/api/hubspot', {
@@ -110,11 +112,7 @@ const Home: NextPage = () => {
 				<div className={style.recaptchaContainer}>
 					<div className={style.recaptchaBox}>
 						{recaptchaVisible ? (
-							<ReCAPTCHA
-								sitekey={process.env.NEXT_PUBLIC_RECAPTCHAV2_SITE_KEY}
-								ref={reRef}
-								onChange={submitEmailAddress}
-							/>
+							<ReCAPTCHA sitekey={reCAPTCHAKey} onChange={submitEmailAddress} />
 						) : (
 							<div></div>
 						)}
