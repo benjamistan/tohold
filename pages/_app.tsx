@@ -18,6 +18,13 @@ function MyApp({ Component, pageProps }: AppProps) {
             gtag('config', 'G-LVD6QELBDV');
           `}
 			</Script>
+			<Script src='https://www.google.com/recaptcha/api.js' async defer />
+			{/* <Script src='https://www.google.com/recaptcha/api.js' />
+			<Script id='recaptchav2'>{`
+          function onSubmit(token) {
+            document.getElementById('form').submit()
+          }
+        `}</Script> */}
 			<Component {...pageProps} />
 		</>
 	);
