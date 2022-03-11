@@ -39,37 +39,6 @@ const style = {
 };
 
 const Home: NextPage = () => {
-	const [emailAddress, setEmailAddress] = useState<string>('');
-	const [submitted, setSubmitted] = useState<boolean>(false);
-	const [recaptchaVisible, setRecaptchaVisible] = useState<boolean>(false);
-
-	const reCAPTCHAKey: string | any =
-		process.env.NEXT_PUBLIC_RECAPTCHAV2_SITE_KEY;
-
-	const submitEmailAddress = async () => {
-		const response = await fetch('/api/hubspot', {
-			method: 'POST',
-			body: JSON.stringify({ emailAddress }),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		});
-		const data = await response.json();
-		setSubmitted(true);
-	};
-
-	const triggerRecaptcha = () => {
-		setRecaptchaVisible(true);
-	};
-
-	useEffect(() => {
-		console.log(`running in env: ${process.env.NODE_ENV}`);
-		console.log(
-			`reCAPTCHA key is: ${process.env.NEXT_PUBLIC_RECAPTCHAV2_SITE_KEY}`
-		);
-		console.log(`Hubspot key is: ${process.env.HUBSPOT_API_KEY}`);
-	}, [submitted, recaptchaVisible]);
-
 	return (
 		<div>
 			<Head>
@@ -81,48 +50,6 @@ const Home: NextPage = () => {
 			<main className={style.container}>
 				<div className={style.logo}>
 					<Image src={logo} alt='Tokey logo' height={132} width={452} />
-				</div>
-
-				<div className={style.flexJustifyCenter}>
-					<div className={style.formContainer}>
-						<div className='col-start-2 col-span-4'>
-							{!submitted ? (
-								<form id='form'>
-									<h1 className={style.formLabel}>Join our mailing list:</h1>
-									<div className={style.formInputContainer}>
-										<input
-											className={style.formInput}
-											type='email'
-											placeholder='your@email.com'
-											aria-label='Email'
-											value={emailAddress}
-											onChange={(e) => setEmailAddress(e.target.value)}
-										/>
-										<button
-											className={style.formButtonOpaque}
-											type='button'
-											onClick={triggerRecaptcha}
-										>
-											Sign Up
-										</button>
-									</div>
-								</form>
-							) : (
-								<div className={style.formLabelSubmitted}>
-									Thanks! If that was an email, it was submitted.
-								</div>
-							)}
-						</div>
-					</div>
-				</div>
-				<div className={style.recaptchaContainer}>
-					<div className={style.recaptchaBox}>
-						{recaptchaVisible ? (
-							<ReCAPTCHA sitekey={reCAPTCHAKey} onChange={submitEmailAddress} />
-						) : (
-							<div></div>
-						)}
-					</div>
 				</div>
 				<div className={style.flexJustifyCenter}>
 					<div className={style.iconAnchorImage}>
