@@ -4,7 +4,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
-import ReCAPTCHA from 'react-google-recaptcha';
 
 import {
 	FaLinkedinIn,
@@ -14,26 +13,26 @@ import {
 	FaTwitter,
 } from 'react-icons/fa';
 
-const logo = 'tokey_logo.png';
+const logo = 'tokey_logo_262x724.png';
 
 const style = {
 	container: 'h-screen align-middle',
 	logo: 'p-4 pt-20 flex justify-center',
 	flexJustifyCenter: 'flex flex-row justify-center pt-20',
 	iconAnchorImage:
-		'flex flex-row justify-center text-4xl font-black px-2 m-1 text-[#070d59] hover:text-[#a8c2e2] cursor-pointer',
+		'flex flex-row justify-center text-4xl font-black px-2 m-1 text-[#0d559d] hover:text-[#212666] cursor-pointer',
 	footer: 'flex border-t-1 text-center',
-	footerLink: 'text-[#070d59] hover:text-[#a8c2e2] font-bold',
+	footerLink: 'text-[#0d559d] hover:text-[#212666] font-bold',
 	formContainer: 'grid grid-cols-6 gap-4 w-1/2',
 	signUpButton:
-		'shadow bg-[#070d59] hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded',
-	formInputContainer: 'flex items-center border-b border-[#070d59] py-2',
-	formLabel: 'block text-[#070d59] font-bold text-3xl pb-5 text-center',
-	formLabelSubmitted: 'block text-[#070d59] font-bold pb-5 text-center',
+		'shadow bg-[#0d559d] hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded',
+	formInputContainer: 'flex items-center border-b border-[#0d559d] py-2',
+	formLabel: 'block text-[#0d559d] font-bold text-3xl pb-5 text-center',
+	formLabelSubmitted: 'block text-[#0d559d] font-bold pb-5 text-center',
 	formInput:
 		'appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none',
 	formButtonOpaque:
-		'flex-shrink-0 bg-[#070d59] bg-[#070d59] border-[#070d59] hover:bg-[#a8c2e2] hover:border-[#a8c2e2] text-sm border-4 text-white py-1 px-2 rounded',
+		'flex-shrink-0 bg-[#0d559d] bg-[#0d559d] border-[#0d559d] hover:bg-[#212666] hover:border-[#212666] text-sm border-4 text-white py-1 px-2 rounded',
 	recaptchaContainer: 'grid grid-cols-3 gap-4 pt-10',
 	recaptchaBox: 'flex col-start-2 col-span-1 justify-center',
 };
@@ -49,7 +48,7 @@ const Home: NextPage = () => {
 
 			<main className={style.container}>
 				<div className={style.logo}>
-					<Image src={logo} alt='Tokey logo' height={132} width={452} />
+					<Image src={logo} alt='Tokey logo' height={262} width={724} />
 				</div>
 				<div className={style.flexJustifyCenter}>
 					<div className={style.iconAnchorImage}>

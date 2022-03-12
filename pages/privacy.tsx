@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const logo = 'tokey_logo.png';
+const logo = 'tokey_logo_262x724.png';
 
 import styles from '../styles/Home.module.css';
 
@@ -12,14 +12,14 @@ const style = {
 	logo: 'p-4 pt-20 flex justify-center cursor-pointer',
 	textContainer: 'grid grid-cols-3 gap-4',
 	textColumn: 'col-start-2',
-	h1: 'block text-[#070d59] font-bold text-3xl pb-1 pt-5',
-	h2: 'block text-[#070d59] font-bold text-2xl pb-2 pt-10',
-	h3: 'block text-[#070d59] font-bold text-xl pb-2 pt-3',
-	h4: 'block text-[#070d59] font-bold pb-5 pt-3',
+	h1: 'block text-[#0d559d] font-bold text-3xl pb-1 pt-5',
+	h2: 'block text-[#0d559d] font-bold text-2xl pb-2 pt-10',
+	h3: 'block text-[#0d559d] font-bold text-xl pb-2 pt-3',
+	h4: 'block text-[#0d559d] font-bold pb-5 pt-3',
 	italic: 'italic pb-6',
 	p: 'pt-2 pb-2',
 	li: 'pb-2',
-	footerLink: 'text-[#070d59] hover:text-[#a8c2e2] font-bold col-start-2',
+	footerLink: 'text-[#0d559d] hover:text-[#212666] font-bold col-start-2',
 	footer: 'grid grid-cols-3 gap-4',
 };
 
@@ -34,7 +34,7 @@ export default function Privacy() {
 			<main className={style.container}>
 				<div className={style.logo}>
 					<Link href='/' passHref>
-						<Image src={logo} alt='Tokey logo' height={132} width={452} />
+						<Image src={logo} alt='Tokey logo' height={262} width={724} />
 					</Link>
 				</div>
 				<div className={style.textContainer}>
